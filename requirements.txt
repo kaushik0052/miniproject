@@ -1,0 +1,6 @@
+Flask
+flask-bootstrap
+spacy
+PyPDF2
+openai
+python-dotenv
