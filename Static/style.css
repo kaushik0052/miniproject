@@ -1,0 +1,144 @@
+/* -------- General Reset -------- */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+/* -------- Container -------- */
+.container {
+    background: #ffffffdd;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 30px 40px;
+    width: 100%;
+    max-width: 850px;
+    animation: fadeIn 0.6s ease-in-out;
+    transition: all 0.3s ease;
+}
+
+/* -------- Headings -------- */
+h1, h2, h3 {
+    color: #333;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* -------- Buttons -------- */
+.btn-primary {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(90deg, #ff6b6b, #f06595);
+    border: none;
+    color: white;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
+}
+
+/* -------- Form Controls -------- */
+.form-control, .form-select {
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    transition: 0.3s ease;
+    width: 100%;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 6px rgba(102, 126, 234, 0.3);
+}
+
+/* -------- Cards -------- */
+.card {
+    border: none;
+    background: #f8f9fa;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    margin-bottom: 20px;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* -------- Flash Messages -------- */
+.alert {
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    padding: 10px 15px;
+}
+
+/* -------- Animations -------- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------- Responsive Design -------- */
+@media (max-width: 992px) {
+    .container {
+        padding: 25px 30px;
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+        align-items: center;
+    }
+    .container {
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .btn-primary, .btn-danger {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 15px;
+        max-width: 95%;
+    }
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    .form-control, .form-select {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+    .btn-primary, .btn-danger {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
