@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Assets Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script>
+        function toggleOptions() {
+            const feature = document.getElementById('feature').value;
+            const numQuestionsDiv = document.getElementById('num_questions_div');
+            const aiOptionsDiv = document.getElementById('ai_options_div');
+
+            // Show MCQ number only for local MCQs
+            if (feature === 'mcq') {
+                numQuestionsDiv.style.display = 'block';
+            } else {
+                numQuestionsDiv.style.display = 'none';
+            }
+
+            // Show AI type selection only for AI generation
+            if (feature === 'ai_generate') {
+                aiOptionsDiv.style.display = 'block';
+            } else {
+                aiOptionsDiv.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body class="bg-light text-dark">
+<div class="container mt-4">
+
+    <!-- Header with username and logout -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>🎓 Education Assets Generator</h1>
+        <div>
+            <span class="me-3">👤 Logged in as: <strong>{{ session['user'] }}</strong></span>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sm">Logout</a>
+        </div>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+        <!-- Feature selection -->
+        <div class="mb-3">
+            <label class="form-label">Choose Feature:</label>
+            <select class="form-select" name="feature" id="feature" onchange="toggleOptions()" required>
+                <option value="mcq" selected>🧠 Generate MCQs</option>
+                <option value="summary">📝 Generate Summary</option>
+                <option value="flashcard">📚 Generate Flashcards</option>
+                <option value="ai_generate">🤖 Generate with AI</option>
+            </select>
+        </div>
+
+        <!-- AI sub-options -->
+        <div class="mb-3" id="ai_options_div" style="display:none;">
+            <label class="form-label">Select AI Output Type:</label>
+            <select class="form-select" name="ai_type">
+                <option value="summary">📝 AI Summary</option>
+                <option value="mcq">🧠 AI MCQs</option>
+                <option value="flashcard">📚 AI Flashcards</option>
+            </select>
+        </div>
+
+        <!-- Text input -->
+        <div class="mb-3">
+            <label for="text" class="form-label">Enter text manually:</label>
+            <textarea class="form-control" name="text" rows="5" placeholder="Paste your text here..."></textarea>
+        </div>
+
+        <!-- File upload -->
+        <div class="mb-3">
+            <label for="files" class="form-label">Or upload file(s):</label>
+            <input type="file" class="form-control" name="files[]" multiple>
+        </div>
+
+        <!-- Number of MCQs (local only) -->
+        <div class="mb-3" id="num_questions_div">
+            <label for="num_questions" class="form-label">Number of questions (for MCQ only):</label>
+            <select class="form-select" name="num_questions">
+                <option value="3">3</option>
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Process Text</button>
+    </form>
+</div>
+
+<script>
+    toggleOptions();
+</script>
+</body>
+</html>
