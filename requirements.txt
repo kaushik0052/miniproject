@@ -1,6 +1,9 @@
 Flask
-flask-bootstrap
+Flask-Bootstrap
+transformers
+torch
 spacy
-PyPDF2
-openai
+nltk
+google-generativeai
 python-dotenv
+PyPDF2
